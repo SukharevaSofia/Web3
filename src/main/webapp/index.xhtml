@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <title>Стартовая страница</title>
+    </ui:define>
+
+    <ui:define name="main">
+        <div class="container">
+        <div class="header">
+            <div class="student_info">
+                <span></span>Сухарева Софья<br/>
+                <span></span>P32131<br/>
+            </div>
+            <div class="student_info">
+                <span>Assignment ID: </span>12178<br/>
+                <span id="clock"/>
+            </div>
+        </div>
+        </div>
+        <div class="link-container">
+            <h:link styleClass="link" outcome="Main">
+                На основную страницу
+            </h:link>
+        </div>
+
+    </ui:define>
+</ui:composition>
+
+</html>
+

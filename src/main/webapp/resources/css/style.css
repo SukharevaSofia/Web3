@@ -1,0 +1,174 @@
+body {
+    background-color: #393e46;
+    font-family: monospace;
+    color: black;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+body span { 
+    font-weight: bold;
+}
+
+/* primary container */
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.container > div {
+    display: flex; 
+    justify-content: space-around;
+}
+
+
+/* primary blocks */
+.header {
+    background-color: #eeeeee;
+    margin: 1%;
+    border-radius: 24px;
+}
+
+.content {
+    margin: 5%;
+}
+
+.table_area {
+    margin: 1%;
+}
+
+
+/* header */
+.student_info {
+    width: 32%;
+    padding: 5px;
+    background-color: #eeeeee;
+}
+/* plot */
+#function_plot {
+    outline: 4px solid black;
+}
+
+/* content */
+.input_content, .picture_content {
+    background-color: #eeeeee;
+    width: 40%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 24px;
+    padding-left: 10px;
+}
+
+.input_content > div {
+    padding: 1%;
+}
+
+.input_content_buttons_columns {
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+}
+
+.send_button_area {
+    text-align: center;
+}
+
+.picture_content_picture {
+    text-align: center;
+    height: 90%;
+}
+
+#picture {
+    height: 100%;
+    width: 70%;
+}
+
+/* table */
+.table_area_table {
+    width: 83%;
+    height: 400px;
+    overflow: scroll;
+    display: block;
+}
+
+#res_table {
+    background-color: #eeeeee;
+    border-collapse: collapse;
+    border: 1px solid grey;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+
+/* buttons */
+.button_structure {
+    border-radius: 6px;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.choose_button {
+
+}
+
+.send_button {
+    background-color: GainsBoro;
+    border-color: DarkGray;
+    padding: 10px;
+    width: 80%;
+}
+
+.send_button:active {
+    box-shadow: 0 3px 0 #161b13;
+}
+
+.choose_button:hover, .send_button:hover {
+    background-color: silver;
+    color: grey;
+}
+
+select {
+    width: 80px;
+    padding: 4px;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+input {
+    width: 100px;
+    padding: 4px;
+    font-family: monospace;
+    font-size: 18px;
+    margin-left: 3px;
+}
+
+input:focus {
+    border-color: #393e46;
+}
+
+.align-center{
+    text-align: center;
+}
+
+
+input:invalid + span::after {
+  content: "☹";
+  padding-left: 5px;
+}
+
+input:valid + span::after {
+    content: "☺";
+    padding-left: 5px;
+}
+
+.hidden{
+    visibility: hidden;
+}

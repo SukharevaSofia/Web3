@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <title>Основная страница</title>
+    </ui:define>
+    <ui:define name="main">
+        <div class="container">
+            <div class="content">
+                <h:form styleClass="input_content">
+                    <div>
+                        <h:outputLabel for="input_x">Coordinate X </h:outputLabel>
+                        <h:inputText
+                                id="input_x" name="input_x"
+                                maxlength="5" autocomplete="off"
+                                value="#{dataBean.dot.x}">
+                            <f:validateDoubleRange minimum="-5" maximum="5"/>
+                            <f:validateRequired/>
+                        </h:inputText>
+                        <span class="validity"/>
+                    </div>
+
+                    <div>
+                        <h:outputLabel for="input_y">Coordinate Y </h:outputLabel>
+                        <h:inputText
+                                id="input_y" name="input_y" type="number"
+                                min="-2" max="2"
+                                step="0.001"
+                                placeholder="0.000"
+                                value="#{dataBean.dot.y}">
+                            <f:validateDoubleRange minimum="-5" maximum="5"/>
+                            <f:validateRequired/>
+                        </h:inputText>
+                        <span class="validity"/>
+                    </div>
+
+                    <div>
+                        <span>Radius R:</span>
+                        <h:selectOneMenu styleClass="choose_button" id="input_R" value="#{dataBean.dot.r}">
+                            <f:selectItem itemLabel="1" itemValue="1"/>
+                            <f:selectItem itemLabel="1.5" itemValue="1.5"/>
+                            <f:selectItem itemLabel="2" itemValue="2"/>
+                            <f:selectItem itemLabel="2.5" itemValue="2.5"/>
+                            <f:selectItem itemLabel="3" itemValue="3"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="send_button_area">
+                        <h:commandButton styleClass="button_structure send_button" id="send_button" value="Send">
+                            <f:ajax execute="@form" listener="#{dataBean.addData()}" render="res_table"/>
+                        </h:commandButton>
+                    </div>
+                </h:form>
+                <div class="picture_content">
+                    <p class="align-center">
+                        <canvas class="canvas" id="function_plot" height="280"
+                                width="400">Canvas and JavaScript required
+                        </canvas>
+                    </p>
+                </div>
+            </div>
+            <div class="table_area">
+                <div class="table_area_table">
+                    <h:dataTable id="res_table" value="#{dataBean.dots}" var="dot">
+                        <h:column>
+                            <f:facet name="header">x</f:facet>
+                            <h:outputText value="#{dot.x}" styleClass="x-result"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">y</f:facet>
+                            <h:outputText value="#{dot.y}" styleClass="y-result"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">r</f:facet>
+                            <h:outputText value="#{dot.r}" styleClass="r-result"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Match</f:facet>
+                            <h:outputText value="#{dot.match ? 'Точка попала в область' : 'Точка не попала в область'}" styleClass="match-result"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Server time</f:facet>
+                            <h:outputText value="#{dot.serverTime}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Execute time</f:facet>
+                            <h:outputText value="#{dot.executeTime} нс"/>
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </div>
+        </div>
+        <h:form styleClass="hidden">
+            <h:inputText id="hidden-x" value="#{dataBean.dot.x}" styleClass="hidden"/>
+            <h:inputText id="hidden-y" value="#{dataBean.dot.y}" styleClass="hidden"/>
+            <h:inputText id="hidden-r" value="#{dataBean.dot.r}" styleClass="hidden"/>
+            <h:commandButton value="Отправить" id="hidden-form" styleClass="hidden">
+                <f:ajax execute="@form" listener="#{dataBean.addData()}" render="res_table"/>
+            </h:commandButton>
+        </h:form>
+
+        <h:outputScript name="js/canvas.js"/>
+        <h:outputScript name="js/mouseEvent.js"/>
+        <h:outputScript name="js/validator.js"/>
+        <h:outputScript name="js/drawDots.js"/>
+    </ui:define>
+</ui:composition>
+</html>
