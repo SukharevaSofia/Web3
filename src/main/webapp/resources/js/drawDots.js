@@ -20,7 +20,7 @@ function parseTable(rVal = 0) {
     })
     hit.forEach(function (input) {
         let val = input.textContent
-        hit_mass.push(val === "Точка попала в область")
+        hit_mass.push(val === "попадание")
     })
 
     for (let i = 0; i < x_mass.length; i++) {

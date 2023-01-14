@@ -1,7 +1,7 @@
-.x-button:disabled, .submit:disabled {
+.x-button:disabled, .send_button:disabled {
     pointer-events: none;
 }
-.x-button, .submit {
+.x-button, .send_button {
     appearance: none;
     background-color: #491D44;
     border: 2px solid #1A1A1A;
@@ -16,7 +16,7 @@
     margin: 0;
     min-height: 55px;
     min-width: 0;
-    max-width: 55px;
+    max-width: 200px;
     outline: none;
     padding: 16px 24px;
     text-align: center;
@@ -28,12 +28,12 @@
     width: 100%;
     will-change: transform;
 }
-.x-button:hover, .submit:hover {
+.x-button:hover, .send_button:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
 }
 
-.x-button:active, .submit:active {
+.x-button:active, .send_button:active {
     box-shadow: none;
     transform: translateY(0);
 }
@@ -47,7 +47,7 @@
 .x-space{
     width: 15%;
 }
-.submit{
+.submit .send_button{
     max-width: 200px;
     width: 100%;
     margin-bottom: 2%;

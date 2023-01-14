@@ -1,12 +1,28 @@
+/*
 .clock-container{
-    background-color: white;
-    border-radius: 10px;
-    width: 400px;
-    margin-left: 598px;
+    display: flex;
+    float: none;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+
 }
 #clock{
+    font-size:larger;
+    background-color: #491D44;
+    color: #FFFF;
     border: 4px;
     text-align: center;
-    text-decoration-color: black;
     padding:5px 20px;
+}*/
+#clock{
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    float: left;
+    width: 40%;
+    height: 50px;
+    font-size:larger;
+    background-color: #491D44;
+    color: #FFFF
 }

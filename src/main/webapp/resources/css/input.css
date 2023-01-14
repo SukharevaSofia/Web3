@@ -33,7 +33,7 @@
     position: relative;
 }
 
-.Input-text {
+.ySelect {
     display: block;
     margin: 0 3% 0 0;
     padding: var(--inputPaddingV) var(--inputPaddingH);
@@ -50,23 +50,23 @@
     max-width: 200px;
 }
 
-.Input-text::placeholder {
+.ySelect::placeholder {
     color: #12020D;
 }
 
-.Input-text:focus {
+.ySelect:focus {
     outline: none;
     box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
 }
 
 
-.Input-text:placeholder-shown + .Input-label {
+.ySelect:placeholder-shown + .Input-label {
     visibility: hidden;
     z-index: -1;
 }
 
-.Input-text:not(:placeholder-shown) + .Input-label,
-.Input-text:focus:not(:placeholder-shown) + .Input-label {
+.ySelect:not(:placeholder-shown) + .Input-label,
+.ySelect:focus:not(:placeholder-shown) + .Input-label {
     visibility: visible;
     z-index: 1;
     opacity: 1;

@@ -4,6 +4,13 @@
  * the fun part starts here
  *
  */
+.rSelect{
+  border: none;
+  margin: 2%;
+}
+.xSelect{
+  margin: 2%;
+}
 input[type=radio] {
   display: none;
 }
