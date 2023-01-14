@@ -1,12 +1,11 @@
-const xButton = document.getElementById("j_idt9:input_x")
-rButton = document.getElementById("j_idt9:input_R")
-yButton = document.getElementById("j_idt9:input_y")
-submit = document.getElementById("j_idt9:send_button")
+const xButton = document.getElementsByClassName("xSelect")[0]
+const yButton = document.getElementsByClassName("ySelect")[0]
+const rButtons = document.querySelectorAll('[type=radio]');
+const submit = document.getElementsByClassName("send_button")[0]
 submit.addEventListener("click", onsubmit);
 
-
 function onsubmit() {
-    let x = validateX()
+    let x = checkX()
     let y = validateY()
     let r = checkR()
     let array = [x, y, r]
@@ -25,15 +24,19 @@ function onsubmit() {
     return false;
 }
 
-function validateX() {
-    let xVal = xButton.value.replace(",", ".")
-    if (!isNaN(xVal) && xVal !== "") {
-        return checkX(Number.parseFloat(xVal).toFixed(3))
+const checkX = function () {
+    let xVal = xButton.value
+    if (!isNaN(xVal) && xVal !== "" && xVal != null) {
+        return {
+            status: true,
+            val: Number.parseFloat(xVal).toFixed(3),
+            errorMessage: ""
+        }
     } else {
         return {
             status: false,
             val: 404,
-            errorMessage: "X должен быть представлен числом"
+            errorMessage: "x должен быть представлен числом"
         }
     }
 }
@@ -46,13 +49,13 @@ function validateY() {
         return {
             status: false,
             val: 404,
-            errorMessage: "Y должен быть представлен числом"
+            errorMessage: "Y должен быть числом :("
         }
     }
 }
 
 function checkY(yVal) {
-    if (yVal >= -5 && yVal <= 3) {
+    if (yVal >= -3 && yVal <= 5) {
         return {
             status: true,
             val: yVal,
@@ -62,50 +65,60 @@ function checkY(yVal) {
         return {
             status: false,
             val: 404,
-            errorMessage: "Число Y должно быть в промежутке от -5 до 3"
+            errorMessage: "Число Y должно быть в промежутке от -3 до 5"
         }
     }
 
 }
 
-function checkX(xVal) {
-    if (xVal >= -3 && xVal <= 3) {
-        return {
-            status: true,
-            val: xVal,
-            errorMessage: ""
+rButtons.forEach((btn)=>{
+    btn.addEventListener("click", (event)=>{
+        console.log(event.target.value);
+    });
+})
+let rButton = () => {
+    let value = null;
+    rButtons.forEach(
+        (button) => {
+            if (button.checked) {
+                value = button.value;
+            }
         }
-    } else {
-        return {
-            status: false,
-            val: 404,
-            errorMessage: "Число X должно быть в промежутке от -3 до 3"
-        }
-    }
-
-}
+    );
+    return value;
+};
 
 const checkR = function () {
-    let rVal = rButton.value.replace(",", ".")
-    if (!isNaN(rVal) && rVal !== "") {
+    if (rButton() != null) {
         return {
             status: true,
-            val: Number.parseFloat(rVal).toFixed(3),
+            val: rButton(),
             errorMessage: ""
         }
     } else {
         return {
             status: false,
             val: 404,
-            errorMessage: "R должен быть представлен числом"
+            errorMessage: "Выбирете значение R"
         }
     }
 }
 
-let validateData = function (x, y, r) {
-    return (x <= 0 && y >= 0 && x >= (-r) && y <= (r / 2))
-        || (x >= 0 && y <= 0 && (x * x + y * y) <= (r * r))
-        || (x <= 0 && y <= 0 && y >= -x - r);
+let validateData = function (x, y, R) {
+    const xNum = parseFloat(x);
+    const yNum = parseFloat(y);
+    const RNum = parseFloat(R);
+
+    if((Math.abs(xNum) <= RNum) && (Math.abs(yNum) <= RNum)){
+        if((xNum > 0)&&(yNum > 0)){
+            return false;
+        }else if ((xNum <= 0)&&(yNum>0)){
+            return ((xNum*xNum + yNum*yNum) <= (RNum*RNum));
+        } else if ((xNum <= 0)&&(yNum<=0)) {
+            return ((-1*(xNum + yNum)) <= RNum);
+        } else return (xNum > 0) && (yNum <= 0);
+    }
+    return false;
 }
 
 let chooseGraph = function (x, y, r) {

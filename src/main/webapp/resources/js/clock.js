@@ -1,4 +1,4 @@
 setInterval(() => {
     document.getElementById("clock").innerHTML = (new Date())
-        .toLocaleString(undefined, {dateStyle: "full", timeStyle: "medium"});
+        .toLocaleString("ru-RU", { dateStyle: "medium", timeStyle: "medium" });
 }, 1000);

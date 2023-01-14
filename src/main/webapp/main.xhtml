@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
 
 <ui:composition template="WEB-INF/template.xhtml">
 
@@ -16,24 +18,26 @@
             <div class="content">
                 <h:form styleClass="input_content">
                     <div>
-                        <h:outputLabel for="input_x">Coordinate X </h:outputLabel>
-                        <h:inputText
-                                id="input_x" name="input_x"
-                                maxlength="5" autocomplete="off"
-                                value="#{dataBean.dot.x}">
-                            <f:validateDoubleRange minimum="-5" maximum="5"/>
-                            <f:validateRequired/>
-                        </h:inputText>
-                        <span class="validity"/>
+                        <span>Значение X:</span>
+                        <h:selectOneMenu styleClass="xSelect" id="input_X" value="#{dataBean.dot.x}">
+                            <f:selectItem itemLabel="-3" itemValue="-3"/>
+                            <f:selectItem itemLabel="-2" itemValue="-2"/>
+                            <f:selectItem itemLabel="-1" itemValue="-1"/>
+                            <f:selectItem itemLabel="0" itemValue="0"/>
+                            <f:selectItem itemLabel="1" itemValue="1"/>
+                            <f:selectItem itemLabel="2" itemValue="2"/>
+                            <f:selectItem itemLabel="3" itemValue="3"/>
+                            <f:selectItem itemLabel="4" itemValue="4"/>
+                            <f:selectItem itemLabel="5" itemValue="5"/>
+                        </h:selectOneMenu>
                     </div>
 
                     <div>
-                        <h:outputLabel for="input_y">Coordinate Y </h:outputLabel>
+                        <h:outputLabel for="input_y">Значение Y: </h:outputLabel>
                         <h:inputText
-                                id="input_y" name="input_y" type="number"
-                                min="-2" max="2"
-                                step="0.001"
-                                placeholder="0.000"
+                                styleClass="ySelect"
+                                id="input_y" name="input_y"
+                                maxlength="5" autocomplete="off"
                                 value="#{dataBean.dot.y}">
                             <f:validateDoubleRange minimum="-5" maximum="5"/>
                             <f:validateRequired/>
@@ -42,17 +46,18 @@
                     </div>
 
                     <div>
-                        <span>Radius R:</span>
-                        <h:selectOneMenu styleClass="choose_button" id="input_R" value="#{dataBean.dot.r}">
-                            <f:selectItem itemLabel="1" itemValue="1"/>
-                            <f:selectItem itemLabel="1.5" itemValue="1.5"/>
-                            <f:selectItem itemLabel="2" itemValue="2"/>
-                            <f:selectItem itemLabel="2.5" itemValue="2.5"/>
-                            <f:selectItem itemLabel="3" itemValue="3"/>
-                        </h:selectOneMenu>
+                        <span>Значение R:</span>
+                        <h:selectOneRadio styleClass="rSelect" id="input_R" value="#{dataBean.dot.r}">
+                            <f:selectItem p:class="r-buttons" itemLabel="1" itemValue="1"/>
+                            <f:selectItem p:class="r-buttons" itemLabel="2" itemValue="2"/>
+                            <f:selectItem p:class="r-buttons" itemLabel="3" itemValue="3"/>
+                            <f:selectItem p:class="r-buttons" itemLabel="4" itemValue="4"/>
+                            <f:selectItem p:class="r-buttons" itemLabel="5" itemValue="5"/>
+                        </h:selectOneRadio>
                     </div>
+
                     <div class="send_button_area">
-                        <h:commandButton styleClass="button_structure send_button" id="send_button" value="Send">
+                        <h:commandButton styleClass="send_button" id="send_button" value="Send">
                             <f:ajax execute="@form" listener="#{dataBean.addData()}" render="res_table"/>
                         </h:commandButton>
                     </div>
@@ -97,10 +102,10 @@
             </div>
         </div>
         <h:form styleClass="hidden">
-            <h:inputText id="hidden-x" value="#{dataBean.dot.x}" styleClass="hidden"/>
-            <h:inputText id="hidden-y" value="#{dataBean.dot.y}" styleClass="hidden"/>
-            <h:inputText id="hidden-r" value="#{dataBean.dot.r}" styleClass="hidden"/>
-            <h:commandButton value="Отправить" id="hidden-form" styleClass="hidden">
+            <h:inputText id="hidden-x" value="#{dataBean.dot.x}" styleClass="hiddenX"/>
+            <h:inputText id="hidden-y" value="#{dataBean.dot.y}" styleClass="hiddenY"/>
+            <h:inputText id="hidden-r" value="#{dataBean.dot.r}" styleClass="hiddenR"/>
+            <h:commandButton value="Отправить" id="hidden-form" styleClass="hiddenSend">
                 <f:ajax execute="@form" listener="#{dataBean.addData()}" render="res_table"/>
             </h:commandButton>
         </h:form>

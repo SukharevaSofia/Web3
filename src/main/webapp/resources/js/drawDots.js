@@ -33,5 +33,3 @@ function parseTable(rVal = 0) {
 
 
 parseTable(parseFloat(localStorage.getItem("r")))
-
-

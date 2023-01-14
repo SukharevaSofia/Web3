@@ -1,0 +1,82 @@
+
+.underlined-Rtext{
+    text-decoration: underline #491D44 ;
+}
+.underlined-text{
+    text-decoration: underline #491D44 ;
+    margin-left: 1%;
+}
+.header{
+    display: flex;
+    float: none;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    height: 50px;
+    font-size:larger;
+    background-color: #491D44;
+    color: #FFFF
+}
+.header-left{
+    display: flex;
+    float: left;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    width: 30%;
+    height: 50px;
+    font-size:larger;
+    background-color: #491D44;
+    color: #FFFF
+}
+
+.header-middle{
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    float: left;
+    width: 40%;
+    height: 50px;
+    font-size:larger;
+    background-color: #491D44;
+    color: #FFFF
+}
+
+.header-right{
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    float: right;
+    width: 30%;
+    height: 50px;
+    font-size:larger;
+    background-color: #491D44;
+    color: #FFFF
+}
+
+#graph {
+    outline: 2px solid #12020D;
+    float: left;
+    margin: 3% 3% 3% 8%;
+}
+
+table.table_check{
+    width: 100%;
+    font-size:large;
+    background-color: #6D466B;
+    color: #FFFFFF;
+}
+
+.x-select{
+    float: left;
+    margin-left: 3%;
+    margin-right: 30%;
+}
+.y-select{
+    width: 10%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+.R-select{
+    float: left;
+    margin-left: 3%;
+    margin-right: 3%;
+}
